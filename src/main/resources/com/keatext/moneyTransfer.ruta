@@ -1,0 +1,6 @@
+PACKAGE com.keatext;
+
+TYPESYSTEM uimaDemoTypeSystem;
+
+(W?{REGEXP("(pay)|(give)")} Money){->MARK(MoneyTransfer)}; 
+
