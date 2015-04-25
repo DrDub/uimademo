@@ -172,7 +172,7 @@ public class UimaDemoServlet implements Servlet {
 	}
 
 	public static void main(String[] args) throws Exception {
-		Server server = new Server(8282);
+		Server server = new Server(Integer.valueOf(args[0]));
 		ServletHolder holder = new ServletHolder(new UimaDemoServlet());
 		ServletHandler context = new ServletHandler();
 		context.addServletWithMapping(holder, "/");
