@@ -76,6 +76,8 @@ public class UimaDemoServlet implements Servlet {
 			line = br.readLine();
 		}
 
+                JSONArray result = new JSONArray();
+
 		synchronized (lock) {
 			try {
 				if (engine == null) {
@@ -102,7 +104,6 @@ public class UimaDemoServlet implements Servlet {
 
 				engine.process(cas);
 
-				JSONArray result = new JSONArray();
 				JCas jcas = cas.getJCas();
 				for (Sentence sentence : JCasUtil.select(jcas, Sentence.class)) {
 					JSONObject obj = new JSONObject();
@@ -163,12 +164,11 @@ public class UimaDemoServlet implements Servlet {
 
 					result.put(obj);
 				}
-
-				response.getWriter().println(result.toString());
 			} catch (Exception e) {
 				e.printStackTrace(response.getWriter());
 			}
 		}
+                response.getWriter().println(result.toString());
 	}
 
 	public static void main(String[] args) throws Exception {
